@@ -1,0 +1,14 @@
+[Unit]
+Description=Shadowsocks client
+After=syslog.target network.target
+
+[Service]
+Type=forking
+
+ExecStart=/usr/bin/sslocal -c /etc/shadowsocks/client.json -d start
+ExecStop=/usr/bin/sslocal -c /etc/shadowsocks/client.json -d stop
+
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
